@@ -1,0 +1,2 @@
+# terraform-cloudflare-mta-sts
+
