@@ -28,7 +28,7 @@ resource "cloudflare_record" "aaaa" {
   zone_id = var.zone_id
   name    = "mta-sts"
   type    = "AAAA"
-  value   = "100:::"
+  value   = "100::"
 }
 
 resource "cloudflare_workers_kv_namespace" "mta_sts" {
