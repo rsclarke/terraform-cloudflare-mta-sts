@@ -22,6 +22,7 @@ resource "cloudflare_record" "a" {
   name    = "mta-sts"
   type    = "A"
   value   = "192.0.2.1"
+  proxied = true
 }
 
 resource "cloudflare_record" "aaaa" {
@@ -29,6 +30,7 @@ resource "cloudflare_record" "aaaa" {
   name    = "mta-sts"
   type    = "AAAA"
   value   = "100::"
+  proxied = true
 }
 
 resource "cloudflare_workers_kv_namespace" "mta_sts" {
