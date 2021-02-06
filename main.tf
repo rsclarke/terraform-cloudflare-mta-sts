@@ -17,6 +17,20 @@ resource "cloudflare_record" "mta_sts" {
   value   = "v=STSv1; id=${local.policy_id}"
 }
 
+resource "cloudflare_record" "a" {
+  zone_id = var.zone_id
+  name    = "mta-sts"
+  type    = "A"
+  value   = "192.0.2.1"
+}
+
+resource "cloudflare_record" "aaaa" {
+  zone_id = var.zone_id
+  name    = "mta-sts"
+  type    = "AAAA"
+  value   = "100:::"
+}
+
 resource "cloudflare_workers_kv_namespace" "mta_sts" {
   title = "mta-sts.${var.zone_name}"
 }
@@ -37,8 +51,8 @@ resource "cloudflare_worker_script" "mta_sts_policy" {
   }
 }
 
-resource "cloudflare_worker_route" "my_route" {
+resource "cloudflare_worker_route" "mta_sts" {
   zone_id     = var.zone_id
-  pattern     = "mta-sts.${var.zone_name}/.well-known/mta-sts.txt"
+  pattern     = "mta-sts.${var.zone_name}/*"
   script_name = cloudflare_worker_script.mta_sts_policy.name
 }

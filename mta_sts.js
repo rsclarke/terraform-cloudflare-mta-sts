@@ -3,10 +3,16 @@ addEventListener("fetch", event => {
 })
 
 async function handleRequest(request) {
-  const value = await POLICY_NAMESPACE.get("policy")
-  if (value === null) {
-    return new Response("Policy not found", { status: 404 })
+  const url = new URL(request.url)
+  let response = null
+
+  if (url.pathname === '/.well-known/mta-sts.txt') {
+    response = await POLICY_NAMESPACE.get("policy")
   }
 
-  return new Response(value)
+  if (response === null) {
+    return new Response("Not found", { status: 404 })
+  }
+
+  return new Response(response)
 }
