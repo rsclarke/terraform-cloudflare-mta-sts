@@ -28,7 +28,7 @@ resource "cloudflare_workers_kv" "mta_sts" {
 }
 
 resource "cloudflare_worker_script" "mta_sts_policy" {
-  name    = "mta-sts.${var.zone_name}"
+  name    = "mta-sts-${replace(var.zone_name, ".", "-")}"
   content = file("${path.module}/mta_sts.js")
 
   kv_namespace_binding {
