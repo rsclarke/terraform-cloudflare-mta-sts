@@ -42,9 +42,9 @@ module {
 |------|-------------|------|:--------:|
 | zone_id | Cloudflare Zone ID | `string` | yes |
 | zone_name | Cloudflare Zone Name | `string` | yes |
-| mode | Sending MTA policy application, [rfc8461#section-5](https://tools.ietf.org/html/rfc8461#section-5).  Default `testing` | `string` | yes |
+| mode | Sending MTA policy application, [rfc8461#section-5](https://tools.ietf.org/html/rfc8461#section-5).  Default `testing` | `string` | no |
 | mx | List of permitted MX hosts, at least one | `list(string)` | yes |
-| max_age | Maximum lifetime of the policy in seconds, up to 31557600, defaults to 604800 (1 week) | `number` | yes |
+| max_age | Maximum lifetime of the policy in seconds, up to 31557600, defaults to 604800 (1 week) | `number` | no |
 | rua | Locations to which aggregate reports about policy violations should be sent, either `mailto:` or `https:` schema. | `list(string)` | yes |
 
 ## Outputs
