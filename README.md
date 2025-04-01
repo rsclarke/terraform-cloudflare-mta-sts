@@ -33,6 +33,7 @@ module {
 
 | Name | Description | Type | Required |
 |------|-------------|------|:--------:|
+| account_id | Cloudflare Account ID | `string` | yes |
 | zone_id | Cloudflare Zone ID | `string` | yes |
 | zone_name | Cloudflare Zone Name | `string` | yes |
 | mode | Sending MTA policy application, [rfc8461#section-5](https://tools.ietf.org/html/rfc8461#section-5).  Default `testing` | `string` | no |
