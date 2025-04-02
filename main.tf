@@ -65,4 +65,10 @@ resource "cloudflare_workers_route" "mta_sts" {
   zone_id = var.zone_id
   pattern = "mta-sts.${var.zone_name}/*"
   script  = cloudflare_workers_script.mta_sts_policy.script_name
+
+  lifecycle {
+    ignore_changes = [
+      route_id
+    ]
+  }
 }
