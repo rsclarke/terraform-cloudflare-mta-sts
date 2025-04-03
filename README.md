@@ -13,8 +13,9 @@ resource "cloudflare_zone" "example_com" {
 module {
   source = "rsclarke/mta-sts/cloudflare"
 
-  zone_id   = cloudflare_zone.example_com.id
-  zone_name = cloudflare_zone.example_com.name
+  account_id = "0123456789abcdef"
+  zone_id    = cloudflare_zone.example_com.id
+  zone_name  = cloudflare_zone.example_com.name
 
   mode    = "enforce"
   mx      = ["mx1.example.com", "mx2.example.net"]
@@ -27,7 +28,7 @@ module {
 
 | Name | Version |
 |------|---------|
-| cloudflare | `>= 2.0` |
+| cloudflare | `~>5.0` |
 
 ## Inputs
 
